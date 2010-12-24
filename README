@@ -1,0 +1,42 @@
+== 欢迎使用找呀搜索及API Python 演示程序
+
+
+== Getting Started
+
+    平台需求:
+
+    1, Linux/Mac/Windows
+    2, Python2.6
+    3. tornado>=1.0
+
+    编译源码:
+
+    1, git clone git://github.com/zhaoia/sdk_demo_server.git
+    2, python demo.py
+
+    安装tornado:
+
+    wget "http://pypi.python.org/packages/source/t/tornado/tornado-1.0.tar.gz"
+    tar xf tornado-1.0.tar.gz
+    cd tornado-1.0
+    sudo python setup.py install
+
+== Zhaoia API 使用
+
+    1,写邮件到 api@hellom2.com 以获取appkey和secretcode
+
+    2,参照demo.py,设置appkey和secretcode
+
+    app_key = "your app_key"
+    secret_code = "your secret_code"
+
+    3,python demo.py
+
+    Zhaoia API 详细使用说明请参考:
+    http://www.zhaoia.com/api
+
+== 其它
+
+本程序仅供Zhaoia API 演示和参考使用。
+版权所有 麦图科技 2010
+

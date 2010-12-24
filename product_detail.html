@@ -1,0 +1,54 @@
+<html>
+    <head><title>{{ product["title"]}} 找呀API</title></head>
+    <body>
+        <table>
+            <tr>
+                <td width=400px>
+                    <img src="{{ product['image'] }}" border=0></img>
+                </td>
+                <td>
+                    <a href="{{ product['url'] }}" target="_blank">{{ product['title'] }}</a>
+                    <p>分类:{{ product.get('category','') }}</p>
+                    <p>品牌:{{ product.get('brand','') }}</p>
+                    <p>型号:{{ product.get('model','') }}</p>
+                    <p>价格:{{ product['price']>0.0 and "￥"+str(product['price']) or "暂无价格" }}</p>
+                    <p>评论总数:({{ product['review']>0.0 and product['review'] or 0 }})</p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    {% if product.get('pas') %}
+                    <table>
+                        {% for item in product['pas'] %}
+                        <tr>
+                            <th>{{ item[0] }}</th>
+                        </tr>
+                        {% for l,r in item[1:] %}
+                        <tr>
+                            <td>{{ l }}</td>
+                            <td>{{ r }}</td>
+                        </tr>
+                        {% end %}
+                        {% end %}
+                    </table>
+                    {% end %}
+                </td>
+            </tr>
+        </table>
+        <p>相关商品</p>
+            {% for p in relas %}
+            <table>
+                <tr>
+                    <td width=400px>
+                        <a href="/detail/?id={{ p['id'] }}"><img src="{{ p['image'] }}" border=0 /></a>
+                    </td>
+                    <td>
+                        <a href="{{ p['url'] }}" target="_blank">{{ p['title'] }}</a>
+                        <p>价格:{{ p['price']>0.0 and "￥"+str(p['price']) or "暂无价格" }} 评论总数:({{ p['review']>0.0 and p['review'] or 0 }})</p>
+                    </td>
+                </tr>
+            </table>
+            {% end %}
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+    <head><title>{{ keyword }} 找呀API</title></head>
+    <body>
+        <h2>查询结果总数:{{ total_rows }}</h2>
+        {% if total_rows > 0 %}
+        {% if page > 1 %}
+        <a href="/search/?keyword={{ keyword }}&page={{ page-1 }}&per_page={{ per_page }}">上一页</a>
+        {% end %}
+        {{ page }}
+        {% if page*per_page < total_rows %}
+        <a href="/search/?keyword={{ keyword }}&page={{ page+1 }}&per_page={{ per_page }}">下一页</a>
+        {% end %}
+        {% end %}
+        {% for product in product_lists %}
+        <table>
+            <td width=400px>
+                <a href="/detail/?id={{ product['id'] }}">
+                    <img src="{{ product['image'] }}" border=0 ></img>
+                </a>
+            </td>
+            <td>
+                <a href="{{ product['url'] }}" target="_blank">{{ product['title'] }}</a>
+                <p>价格:{{ product['price']>0.0 and "￥"+str(product['price']) or "暂无价格" }}</p>
+                <p>评论总数:({{ product['review']>0.0 and product['review'] or 0 }})</p>
+            </td>
+        </table>
+        {% end %} 
+        {% if total_rows > 0 %}
+        {% if page > 1 %}
+        <a href="/search/?keyword={{ keyword }}&page={{ page-1 }}&per_page={{ per_page }}">上一页</a>
+        {% end %}
+        {{ page }}
+        {% if page*per_page < total_rows %}
+        <a href="/search/?keyword={{ keyword }}&page={{ page+1 }}&per_page={{ per_page }}">下一页</a>
+        {% end %}
+        {% end %} 
+    </body>
+</html>
